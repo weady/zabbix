@@ -1,3 +1,3 @@
 # zabbix
 zabbix 2.4.6
-zabbix info
+实现服务器和客户端的自动部署，以及数据库的表自动分区
