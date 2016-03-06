@@ -241,9 +241,9 @@ function Sync(){
 }
 #Get or Put file to FTP
 function ftp(){
-	ftp_ip="ftp.ipanel.cn"
-	username="homedmaintain"
-	passwd="HomedMaintain44"
+	ftp_ip="ftp.xxx.cn"
+	username="xxx"
+	passwd="xxxx"
 	read -p "Input file(eg: put/get local_dir ftp_dir files):" method l_dir ftp_dir file
 	echo "------------------------------------------------"
 	echo "Start $method $file to  at `date +%Y-%m-%d-%T`"
