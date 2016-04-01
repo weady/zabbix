@@ -18,6 +18,11 @@ function install_php(){
 	--with-apxs2=/usr/local/apache/bin/apxs \
 	--with-libxml-dir=/usr/local/libxml2 \
 	--enable-sockets \
+	--with-sqlite3 \
+	--with-pdo-mysql \
+	--with-curl \
+	--with-posix \
+	--with-pcntl \
 	--with-mysql=mysqlnd \
 	--with-mysqli \
 	--with-gettext=/usr/lib64 \
