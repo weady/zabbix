@@ -12,6 +12,41 @@
 #
 
 disk=$1
+time_y=`date "+%Y-%m-%d %T"`
+time_d=`date +%d | tr -d '0'`
+time_h=`date +%H:%M`
+#--------------------------
+#向磁盘中写入文件，写入异常判断磁盘有问题
+function disk_status_check(){
+	par_num=`df -lh | grep $disk|wc -l`
+	mount_point=`df -lh | grep $disk|awk '{print $NF}'`
+	if [ $par_num -gt 1 ];then
+		echo "$time_y" >/tmp/zb_disk_check.txt
+		if [ $? -eq 1 ];then
+			echo "ERROR:系统盘无法写入数据"
+		else
+			echo "OK"
+		fi
+	elif [ $par_num -eq 1 ];then
+		echo "$time_y" >$mount_point/zb_disk_check.txt
+		 if [ $? -eq 1 ];then
+                        echo "ERROR:$disk [$mount_point] 无法写入数据"
+                else
+                        echo "[$mount_point] OK"
+		fi
+	fi
+}
+#通过分析messages文件，发现Hardware Error说明出现坏块
+function bad_block(){
+	result=`cat /var/log/messages | grep "${time_d} ${time_h}.*${disk}.*Hardware Error" | tail -n 3`
+	if [ ! -z $result ];then
+		echo "ERROR:$disk 有坏块"
+	else
+		echo "OK"
+	fi
+}
+
+
 case $2 in
 	read_ops)
 		echo "`grep "$disk\>" /proc/diskstats | awk '{print $4}'`"
@@ -36,6 +71,12 @@ case $2 in
 		;;
 	io_ms)
 		echo "`grep "$disk\>" /proc/diskstats | awk '{print $13}'`"
+		;;
+	disk_status)
+		disk_status_check		
+		;;
+	disk_block)
+		bad_block		
 		;;
 	util)
 		list=`cat /proc/diskstats | awk '$3~/sd.*[a-z]$/ {print $3}' | sort`
