@@ -37,8 +37,8 @@ function deal_data(){
 	sum=0
 	for id in $ilogslaveid_lists
 	do
-		get_sql="select f_${value}_average from ${table}${id} order by f_time desc limit 1;"
-        	result=`$mysql_cmd -e "$get_sql" | grep -v "f_${value}_average"`
+		get_sql="select f_${value}_current from ${table}${id} order by f_time desc limit 1;"
+        	result=`$mysql_cmd -e "$get_sql" | grep -v "f_${value}_current"`
 		if [ -z $result ];then
 			result=0
 		fi
