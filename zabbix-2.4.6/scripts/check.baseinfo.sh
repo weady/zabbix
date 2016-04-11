@@ -4,6 +4,17 @@
 #	wangdd 2016/03/10
 
 name=$1
+#获取的系统的硬件信息，操作系统版本
+function get_sys_info(){
+        system_info=`cat /etc/redhat-release | sed 's/\(.*\) (.*/\1/g'`
+        type=`dmidecode | grep -A 4 "System Information"`
+        system_type=`echo "$type" | sed 's/\n/ /g'`
+        name=`echo "$type" | grep "Manufacturer" | awk '{print $2}'`
+        Product=`echo "$type" | grep "Product"|awk -F':' '{print $2}'`
+        Serial=`echo "$type" | grep "Serial"|awk -F ':' '{print $2}' | sed 's/ //g'`
+        echo $system_info"|"$name $Product"|"$Serial
+}
+
 
 case $name in
 	disk_num)
@@ -31,6 +42,9 @@ case $name in
 	ip_list)
 		net_ip=`ifconfig |grep  -e 'Link encap' -A1 | grep -v '\-\-' | sed 'N;s/\n//' | awk -F '[[:space:]]*' '{print $1,$7}' | awk -F '[: ]' '{print $1,$NF}' | grep -v 'lo' | awk 'BEGIN{ORS="|"} {print}'`
 		echo $net_ip
+		;;
+	sys_info)
+		get_sys_info
 		;;
 	*)
 		echo "Error"
