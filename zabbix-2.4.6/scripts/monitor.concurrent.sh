@@ -1,74 +1,18 @@
 #!/bin/bash
 #
-#	by wangdd 2016/04/07
+#       by wangdd 2016/04/16
 #
-#这个脚本主要是获取并发数的信息
-#
-#使用的数据库homed_maintain
-#涉及到的表:
-#ilogslave服务产生的原始数据表: %d代表服务号
-#1.原始数据
-#t_dss_stat_playc_total_%d 	//当前点播总数统计
-#t_dss_stat_playc_stb_%d //机顶盒当前播放数目统计
-#t_dss_stat_playc_smartcard_%d	//智能卡当前播放
-#t_dss_stat_playc_mobile_%d	//手机端当前播放
-#t_dss_stat_playc_pad_%d		//pad端当前播放
-#t_dss_stat_playc_pc_%d		//pc 端移动播放
-#2.保留3天的原始数据
-#3.利用原始数中的瞬时值，用于作图
-#数据字段说明:
-#f_total_current---总点播均数 f_movie_current---电影均数 f_tr_current---回看均数
-#f_ts_current---一般时移均数 f_kts_current---一键时移均数 f_live_current---直播均数
-#f_d_current---下载均数 
-#传入的三个参数，$1,$3 确定了数据表，$2确定了查询字段
-# $1 是通过check.concurrent.sh 脚本获取的{#SRVID} $2 取值范围是[total,movie,tr,ts,kts,live,d]
-# $3 的取值范围[total,stb,smartcard,mobile,pad,pc]
+#这个脚本是通过ilogslave的run日志获取出本机的并发数
+#2016-04-15 00:00:00:773 - [INFO] - PlayCount
 
-serviceid=$1 
-value=$2
-equipment_type=$3
-date_time=`date +%Y-%m-%d -d "3 days ago"`
-host=`cat /homed/config_comm.xml  | grep 'mt_db_ip' | awk -F '[><]' '{print $3}'`
-user='root'
-passwd=`cat /homed/config_comm.xml  | grep 'mt_db_pwd' | awk -F '[><]' '{print $3}'`
-database='homed_maintain'
-mysql_cmd="mysql -B -u$user -p$passwd -h$host $database"
-
-#处理数据
-function deal_data(){
-	table=$1
-	get_sql="select f_${value}_current from $table order by f_time desc limit 1;"
-	result=`$mysql_cmd -e "$get_sql" | grep -v "f_${value}_current"`
-	#清除三天前的数据
-	delete_sql="delete from $table where f_time < '"$date_time"'"
-	delete_old_data=`$mysql_cmd -e "$delete_sql"`
-	if [ -z $result ];then
-		echo "0"
-	else
-		echo $result
-	fi
+argv=$1
+device_type=`echo "$argv" | awk -F':' '{print $NF}'`
+function get_con_num(){
+	path="/homed/ilogslave/log"
+	now_time=`date "+%Y-%m-%d %H:%M"`
+	tmp=`cat /homed/ilogslave/log/run*.log | grep "${now_time}.*PlayCount.*" | sed 's/^.*\(\<NowTotalCount.*NowDCount 0,\)RequestCount.*\(StbNowTotalCount.*StbNowDCount 0,\).*\(SmartCardNowTotalCount.*SmartCardNowDCount 0,\).*\(MobileNowTotalCount.*MobileNowDCount 0,\).*\(PadNowTotalCount.*PadNowDCount 0,\).*\(PcNowTotalCount.*PcNowDCount 0,\).*/\1\2\3\4\5\6/g' | sed 's/,/\n/g' | sed '/^$/d' |awk '{sum[$1]+=$2}END{for(key in sum) print key,sum[key]}'`
+	echo "$tmp" >/tmp/zb_con.log
+	result=`cat /tmp/zb_con.log | grep "\<$device_type\>" | awk '{print $2}'`
+	echo "$result"
 }
-
-case $3 in
-	total)
-		deal_data "t_dss_stat_playc_total_${serviceid}"
-		;;
-	stb)
-		deal_data "t_dss_stat_playc_stb_${serviceid}"
-		;;
-	smartcard)
-		deal_data "t_dss_stat_playc_smartcard_${serviceid}"
-		;;
-	mobile)
-		deal_data "t_dss_stat_playc_mobile_${serviceid}"
-		;;
-	pad)
-		deal_data "t_dss_stat_playc_pad_${serviceid}"
-		;;
-	pc)
-		deal_data "t_dss_stat_playc_pc_${serviceid}"
-		;;
-	*)
-		echo "Error"
-		;;
-esac
+get_con_num
