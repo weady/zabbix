@@ -80,9 +80,10 @@ function get_alerts(){
                     left join triggers t on f.triggerid = t.triggerid
                     where t.status = 0 and value=1 group by t.description ORDER BY lastchange desc,description;"
 	result=`$mysqlcmd "$sql"`
-	alert_lists=`cat /tmp/zb_alert.log | grep -v "lastchange"`
+	alert_lists=`echo "$result" | grep -v "lastchange"`
 	tmp=`echo "$alert_lists"| sed 's/[[:space:]]/ /g'`
-	echo "$tmp"
+	alert=`echo "$tmp" | sed 's/\(^[0-9]*\) \(.*\) \([s|m].*\) \([2|4]\)/\1|\2|\3|\4/g'`
+	echo "$alert"
 }
 #------------------------------------------------------------------------
 #主入口
