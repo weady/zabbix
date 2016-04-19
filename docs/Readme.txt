@@ -1,8 +1,8 @@
-1.homed_cluster_并发.xml 
+1.集群并发推流模板.xml 
 该模板只需链接到对应的zabbix服务端主机即可，改模板是对整个集群中的并发数进行监测
-2.Homed_单机并发.xml
+2.单机并发推流模板.xml
 该模板追加到linux_base.xml模板后即可，是对集群中每台ilogslave主机上的并发数的监控
-3.linux_base.xml
+3.基础模板.xml
 该模板是对homed集群的基本监控的模板
-4.switch.xml
+4.交换机模板.xml
 该模板是对交换机的监控
