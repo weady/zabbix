@@ -20,24 +20,27 @@ function db(){
 function chennel_select(){
 	ch_mysql="set names utf8;select f_record_udp_dir,f_work_flag from t_record_channel_info"
 	db "dtvs" "$ch_mysql"
-	ch_name_ld=`echo "$cmd" | grep -vE "f_record_udp_dir|f_work_flag" |awk 's=0;s=and($NF,4);{if(s==4) print}' | sort -u|awk '{print $1}' | grep "_ld"`
-	for ld_channel in $ch_name_ld
+	channel_lists=`echo "$cmd" | grep -vE "f_record_udp_dir|f_work_flag" |awk 's=0;s=and($NF,4);{if(s==4) print}' | sort -u|awk '{print $1}'`
+	for channel_name in $channel_lists
 	do
-		tmp=${ld_channel%_*}
-		ch_name+=`echo "$tmp "`
+		if [[ "$channel_name" =~ _.*d$ ]];then
+			d_channel=${channel_name%_*}
+			tag=${channel_name#*_}
+			mysql="set names utf8;select chinese_name from channel_store where status=5 and extra_flag<=128 and extra_flag<>0 and english_name='$d_channel';"
+        		db "dtvs" "$mysql"
+			chinese_name+=`echo "${cmd}_${tag} " | grep -vE "chinese_name"|sed 's/(/_/g'|tr -d ')'`
+		else
+			mysql="set names utf8;select chinese_name from channel_store where status=5 and extra_flag<=128 and extra_flag<>0 and english_name='$channel_name';"
+        		db "dtvs" "$mysql"
+			chinese_name+=`echo "${cmd} " | grep -vE "chinese_name"|sed 's/(/_/g'|tr -d ')'`
+		fi
 	done
-	ch_ld_name=`echo "$ch_name" | sed 's/ /\n/g' | sed '/^$/d'`
-	for name in $ch_ld_name
-	do
-		mysql="set names utf8;select chinese_name from channel_store where status=5 and extra_flag<=128 and extra_flag<>0 and english_name='$name';"
-        	db "dtvs" "$mysql"
-		ld_chinese_name+=`echo "${cmd}_ld " | grep -vE "chinese_name"`
-	done
-	result=`echo "$ld_chinese_name" | sed 's/ /\n/g' |sed '/^$/d'|grep -v "^_"`
+	result=`echo "$chinese_name" | sed 's/ /\n/g' |sed '/^$/d'`
 }
+#-------------------------------------------------------------
 #把数据转换成json格式
 function transfer(){
-zb_name="$name_channel_china"
+zb_name="$result"
 COUNT=`echo "$zb_name" |wc -l`
 INDEX=0
 echo {'"data"':[
@@ -51,20 +54,5 @@ echo {'"data"':[
 		done
 	echo ]}
 }
-#main
-function main(){
-	mysql="set names utf8;select f_record_udp_dir,f_work_flag from t_record_channel_info"
-        db "dtvs" "$mysql"
-        name_ld=`echo "$cmd" | grep -vE "f_record_udp_dir|f_work_flag" |awk 's=0;s=and($NF,4);{if(s==4) print}' | sort -u|awk '{print $1}'`
-	for name in $name_ld
-	do
-		mysql="set names utf8;select chinese_name from channel_store where status=5 and extra_flag<=128 and extra_flag<>0 and english_name='$name';"
-		db "dtvs" "$mysql"
-		chinese_name+=`echo "${cmd} " | grep -vE "chinese_name"`
-	done
-	result01=`echo "$chinese_name" | sed 's/ /\n/g' |sed '/^$/d'`
-	chennel_select
-	name_channel_china=`echo "$result $result01" | sed 's/ /\n/g' |sed '/^$/d'`
-	transfer
-}
-main
+chennel_select
+transfer

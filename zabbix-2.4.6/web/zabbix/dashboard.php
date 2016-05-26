@@ -235,7 +235,7 @@ if (hasRequest('favobj') && hasRequest('favaction')) {
 		case 'sysmapid':
 			if ($favouriteAction == 'add') {
 				zbx_value2array($favouriteId);
-
+		
 				foreach ($favouriteId as $id) {
 					$result &= CFavorite::add('web.favorite.sysmapids', $id, $favouriteObject);
 				}
@@ -243,10 +243,10 @@ if (hasRequest('favobj') && hasRequest('favaction')) {
 			elseif ($favouriteAction == 'remove') {
 				$result &= CFavorite::remove('web.favorite.sysmapids', $favouriteId, $favouriteObject);
 			}
-
+		
 			$data = getFavouriteMaps();
 			$data = $data->toString();
-
+		
 			echo '
 				jQuery("#'.WIDGET_FAVOURITE_MAPS.'").html('.CJs::encodeJson($data).');
 				jQuery(".menuPopup").remove();
@@ -321,18 +321,18 @@ $row = CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_GRAPHS.'.row', 0);
 $dashboardGrid[$col][$row] = $favouriteGraphs;
 
 // favourite maps
-$icon = new CIcon(_('Menu'), 'iconmenu');
-$icon->setAttribute('id', 'favouriteMaps');
-$icon->setMenuPopup(CMenuPopupHelper::getFavouriteMaps());
-
-$favouriteMaps = new CCollapsibleUiWidget(WIDGET_FAVOURITE_MAPS, getFavouriteMaps());
-$favouriteMaps->open = (bool) CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.state', true);
-$favouriteMaps->setHeader(_('Favourite maps'), $icon);
-$favouriteMaps->setFooter(new CLink(_('Maps').' &raquo;', 'maps.php', 'highlight'), true);
-
-$col = CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.col', 0);
-$row = CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.row', 2);
-$dashboardGrid[$col][$row] = $favouriteMaps;
+#$icon = new CIcon(_('Menu'), 'iconmenu');
+#$icon->setAttribute('id', 'favouriteMaps');
+#$icon->setMenuPopup(CMenuPopupHelper::getFavouriteMaps());
+#
+#$favouriteMaps = new CCollapsibleUiWidget(WIDGET_FAVOURITE_MAPS, getFavouriteMaps());
+#$favouriteMaps->open = (bool) CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.state', true);
+#$favouriteMaps->setHeader(_('Favourite maps'), $icon);
+#$favouriteMaps->setFooter(new CLink(_('Maps').' &raquo;', 'maps.php', 'highlight'), true);
+#
+#$col = CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.col', 0);
+#$row = CProfile::get('web.dashboard.widget.'.WIDGET_FAVOURITE_MAPS.'.row', 2);
+#$dashboardGrid[$col][$row] = $favouriteMaps;
 
 // favourite screens
 $icon = new CIcon(_('Menu'), 'iconmenu');

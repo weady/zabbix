@@ -9,10 +9,10 @@ path="/usr/local/zabbix"
 
 #check raid status
 function raid_status(){
-line=`/opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL -Nolog| grep -e "DISK GROUP:" -e "Physical Disk:" -e "Firmware state:"`
+line=`sudo /opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL -Nolog| grep -e "DISK GROUP:" -e "Physical Disk:" -e "Firmware state:"`
 tmp=`echo "$line" | awk '/^DISK/{T=$0;next;}{print T":\t"$0;}' | awk -F ':' '$0 ~ /Firmware state/ {print $3,$4;next} {print $0}' | awk '/Physical/ {P=$0;next} {print P,$0}'`
 online=`echo "$tmp" | grep "Online"`
-Error=`/opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL -Nolog | egrep -B 5 "Degraded" | grep 'Name' | awk -F ':' '{print $NF}'`
+Error=`sudo /opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL -Nolog | egrep -B 5 "Degraded" | grep 'Name' | awk -F ':' '{print $NF}'`
 #fail=`echo "$line" | egrep "Failed|Rebuild"`
 if [ -z "$Error" ];then
         echo "$online"
@@ -24,7 +24,7 @@ fi
 OK=""
 Error=""
 function P_disk_status(){
-	disk_list=`/opt/MegaRAID/MegaCli/MegaCli64 -PDList -aALL -Nolog| grep "Firmware state" | awk -F'[:,]' '{print $2}' | sed 's/ //g'`
+	disk_list=`sudo /opt/MegaRAID/MegaCli/MegaCli64 -PDList -aALL -Nolog| grep "Firmware state" | awk -F'[:,]' '{print $2}' | sed 's/ //g'`
 	for disk_status in $disk_list
 	do
 		num=$[ $num + 1 ]

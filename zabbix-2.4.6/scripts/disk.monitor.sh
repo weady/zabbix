@@ -16,7 +16,6 @@ time_y=`date "+%Y-%m-%d %T"`
 time_d=`date +%d | tr -d '0'`
 time_h=`date +%H:%M`
 #--------------------------
-#向磁盘中写入文件，写入异常判断磁盘有问题
 function disk_status_check(){
 	par_num=`df -lh | grep $disk|wc -l`
 	mount_point=`df -lh | grep $disk|awk '{print $NF}'`
@@ -36,7 +35,6 @@ function disk_status_check(){
 		fi
 	fi
 }
-#通过分析messages文件，发现Hardware Error说明出现坏块
 function bad_block(){
 	result=`cat /var/log/messages | grep "${time_d} ${time_h}.*${disk}.*Hardware Error" | tail -n 3`
 	if [ ! -z $result ];then

@@ -119,7 +119,7 @@
 /* #undef HAVE_KVM_H */
 
 /* Define to 1 if you have the <lber.h> header file. */
-#define HAVE_LBER_H 1
+/* #undef HAVE_LBER_H */
 
 /* Define to 1 if LDAP should be enabled. */
 /* #undef HAVE_LDAP */
@@ -212,7 +212,7 @@
 /* #undef HAVE_NET_IF_MIB_H */
 
 /* Define to 1 if you have the <nlist.h> header file. */
-#define HAVE_NLIST_H 1
+/* #undef HAVE_NLIST_H */
 
 /* Define to 1 if OPENIPMI should be enabled. */
 /* #undef HAVE_OPENIPMI */

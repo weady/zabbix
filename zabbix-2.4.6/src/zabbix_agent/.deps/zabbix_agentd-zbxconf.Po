@@ -55,21 +55,19 @@ zabbix_agentd-zbxconf.o: zbxconf.c ../../include/common.h \
  /usr/include/linux/sysctl.h /usr/include/linux/types.h \
  /usr/include/sys/sysinfo.h /usr/include/sys/vfs.h \
  /usr/include/sys/statfs.h /usr/include/bits/statfs.h \
- /usr/include/nlist.h /usr/include/net/if.h /usr/include/sys/user.h \
- /usr/include/syslog.h /usr/include/sys/syslog.h \
- /usr/include/bits/syslog-path.h /usr/include/unistd.h \
- /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
- /usr/include/bits/confname.h /usr/include/getopt.h /usr/include/lber.h \
- /usr/include/lber_types.h /usr/include/ldap_cdefs.h \
- /usr/include/sys/ipc.h /usr/include/bits/ipctypes.h \
- /usr/include/bits/ipc.h /usr/include/sys/sem.h /usr/include/bits/sem.h \
- /usr/include/sys/shm.h /usr/include/bits/shm.h /usr/include/sys/file.h \
- /usr/include/math.h /usr/include/bits/huge_val.h \
- /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
- /usr/include/bits/inf.h /usr/include/bits/nan.h \
- /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
- /usr/include/bits/mathinline.h /usr/include/regex.h \
- /usr/include/arpa/inet.h /usr/include/sys/mount.h \
+ /usr/include/net/if.h /usr/include/sys/user.h /usr/include/syslog.h \
+ /usr/include/sys/syslog.h /usr/include/bits/syslog-path.h \
+ /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+ /usr/include/bits/environments.h /usr/include/bits/confname.h \
+ /usr/include/getopt.h /usr/include/sys/ipc.h \
+ /usr/include/bits/ipctypes.h /usr/include/bits/ipc.h \
+ /usr/include/sys/sem.h /usr/include/bits/sem.h /usr/include/sys/shm.h \
+ /usr/include/bits/shm.h /usr/include/sys/file.h /usr/include/math.h \
+ /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+ /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+ /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
+ /usr/include/regex.h /usr/include/arpa/inet.h /usr/include/sys/mount.h \
  /usr/include/sys/ioctl.h /usr/include/bits/ioctls.h \
  /usr/include/asm/ioctls.h /usr/include/asm-generic/ioctls.h \
  /usr/include/linux/ioctl.h /usr/include/asm/ioctl.h \
@@ -319,8 +317,6 @@ zabbix_agentd-zbxconf.o: zbxconf.c ../../include/common.h \
 
 /usr/include/bits/statfs.h:
 
-/usr/include/nlist.h:
-
 /usr/include/net/if.h:
 
 /usr/include/sys/user.h:
@@ -340,12 +336,6 @@ zabbix_agentd-zbxconf.o: zbxconf.c ../../include/common.h \
 /usr/include/bits/confname.h:
 
 /usr/include/getopt.h:
-
-/usr/include/lber.h:
-
-/usr/include/lber_types.h:
-
-/usr/include/ldap_cdefs.h:
 
 /usr/include/sys/ipc.h:
 

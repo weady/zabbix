@@ -4,9 +4,9 @@
 #
 #	by wangdd 2015/10/16
 
-ip=`cat /hadoop/hadoop-1.2.1/conf/hdfs-site.xml | grep 50070 | awk -F'[<>]' '{print $3}'`
-file=`curl -s http://$ip/dfshealth.jsp | egrep "Configured Capacity" | sed 's/<td id="col[0-9]"> //g;s/<tr class="row[a-zA-Z]*"//g;s/> /\n/g' | tail -n +2`
-name=`curl -s "http://$ip/dfsnodelist.jsp?whatNodes=DEAD" | grep 50075 | awk -F '[<>]' '{print $(NF-2)}'`
+ip=`cat /homed/config_comm.xml | grep master | grep 'master_lo_ip' | awk -F'[<>]' '{print $3}'`
+file=`curl -s http://$ip:50070/dfshealth.jsp | egrep "Configured Capacity" | sed 's/<td id="col[0-9]"> //g;s/<tr class="row[a-zA-Z]*"//g;s/> /\n/g' | tail -n +2`
+name=`curl -s "http://$ip:50070/dfsnodelist.jsp?whatNodes=DEAD" | grep 50075 | awk -F '[<>]' '{print $(NF-2)}'`
 function transfer(){
 	value=`echo "$file" | grep "^$1:" | awk -F':' '{print $2}'`
 	if [[ "$value" =~ TB$ ]];then

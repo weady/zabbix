@@ -18,6 +18,8 @@
 # $1 是设备类型确定表 $1[total,stb,smartcard,mobile,pad,pc]
 # $2 是取值字段,确定从数据库获取的字段 $2[total,movie,tr,ts,kts,live,d]
 #
+#修改 $2 是取值字段,确定从数据库获取的字段 $2[total,movie,tr,ts_total,live] 合并了普通时移和一键时移，取消下载
+#
 #--------------------------------------------------------
 #定义基本的公共变量
 device_type=$1
@@ -48,25 +50,55 @@ function deal_data(){
 }
 
 #--------------------------------------------------------
+#定义数据处理函数,汇总ts,kts,d三者的数据
+function mege_data(){
+	table=$1
+	sum=0
+	for id in $ilogslaveid_lists
+	do
+		mege_sql="select f_ts_current,f_kts_current from ${table}${id} order by f_time desc limit 1;"
+		result=`$mysql_cmd -e "$mege_sql" | grep -v "current" | awk '{print sum=$1+$2}'`
+		if [ -z "$result" ];then
+                        result=0
+                fi
+                sum=`echo $result + $sum | bc`
+        done
+        echo $sum
+}
+
+#--------------------------------------------------------
+#
+function result_fun(){
+	if [ "$value" == "ts_total" ];then
+		mege_data "t_dss_stat_playc_${device_type}_"
+        else
+               	deal_data "t_dss_stat_playc_${device_type}_"
+        fi
+}
+
+#--------------------------------------------------------
 #定义数据处理函数
 case $device_type in
 	total)
-		deal_data "t_dss_stat_playc_total_"
+		result_fun
 		;;
 	stb)
-		deal_data "t_dss_stat_playc_stb_"
+		result_fun
 		;;
 	smartcard)
-		deal_data "t_dss_stat_playc_smartcard_"
+		result_fun
 		;;
 	mobile)
-		deal_data "t_dss_stat_playc_mobile_"
+		result_fun
 		;;
 	pad)
-		deal_data "t_dss_stat_playc_pad_"
+		result_fun
 		;;
 	pc)
-		deal_data "t_dss_stat_playc_pc_"
+		result_fun
+		;;
+	total_ks)
+		mege_data "t_dss_stat_playc_${value}_"
 		;;
 	*)
 		echo "ERROR"

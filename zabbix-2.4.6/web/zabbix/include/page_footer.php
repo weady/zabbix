@@ -89,7 +89,7 @@ if ($page['type'] == PAGE_TYPE_HTML) {
 				new CSpan($conString, 'footer_sign')
 			), 'right')
 		));
-		$table->show();
+		#$table->show();
 	}
 
 	require_once 'include/views/js/common.init.js.php';

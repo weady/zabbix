@@ -66,21 +66,21 @@ $ZBX_MENU = array(
 				'label' => _('Screens'),
 				'sub_pages' => array('slides.php')
 			),
-			array(
-				'url' => 'maps.php',
-				'label' => _('Maps'),
-				'sub_pages' => array('map.php')
-			),
+			#array(
+			#	'url' => 'maps.php',
+			#	'label' => _('Maps'),
+			#	'sub_pages' => array('map.php')
+			#),
 			array(
 				'url' => 'discovery.php',
 				'label' => _('Discovery'),
 				'user_type' => USER_TYPE_ZABBIX_ADMIN
 			),
-			array(
-				'url' => 'srv_status.php',
-				'label' => _('IT services'),
-				'sub_pages' => array('report3.php', 'chart5.php')
-			),
+			#array(
+			#	'url' => 'srv_status.php',
+			#	'label' => _('IT services'),
+			#	'sub_pages' => array('report3.php', 'chart5.php')
+			#),
 			array(
 				'url' => 'chart3.php'
 			),
@@ -176,10 +176,10 @@ $ZBX_MENU = array(
 					'popup_httpstep.php'
 				)
 			),
-			array(
-				'url' => 'maintenance.php',
-				'label' => _('Maintenance')
-			),
+			#array(
+			#	'url' => 'maintenance.php',
+			#	'label' => _('Maintenance')
+			#),
 			array(
 				'url' => 'actionconf.php',
 				'label' => _('Actions')
@@ -189,23 +189,23 @@ $ZBX_MENU = array(
 				'label' => _('Screens'),
 				'sub_pages' => array('screenedit.php')
 			),
-			array(
-				'url' => 'slideconf.php',
-				'label' => _('Slide shows'),
-			),
-			array(
-				'url' => 'sysmaps.php',
-				'label' => _('Maps'),
-				'sub_pages' => array('image.php', 'sysmap.php')
-			),
+			#array(
+			#	'url' => 'slideconf.php',
+			#	'label' => _('Slide shows'),
+			#),
+			#array(
+			#	'url' => 'sysmaps.php',
+			#	'label' => _('Maps'),
+			#	'sub_pages' => array('image.php', 'sysmap.php')
+			#),
 			array(
 				'url' => 'discoveryconf.php',
 				'label' => _('Discovery')
-			),
-			array(
-				'url' => 'services.php',
-				'label' => _('IT services')
 			)
+			#array(
+			#	'url' => 'services.php',
+			#	'label' => _('IT services')
+			#)
 		)
 	),
 	'admin' => array(
@@ -233,10 +233,10 @@ $ZBX_MENU = array(
 				'url' => 'proxies.php',
 				'label' => _('Proxies')
 			),
-			array(
-				'url' => 'authentication.php',
-				'label' => _('Authentication')
-			),
+			#array(
+			#	'url' => 'authentication.php',
+			#	'label' => _('Authentication')
+			#),
 			array(
 				'url' => 'usergrps.php',
 				'label' => _('Users'),
@@ -258,11 +258,11 @@ $ZBX_MENU = array(
 			array(
 				'url' => 'queue.php',
 				'label' => _('Queue')
-			),
-			array(
-				'url' => 'report4.php',
-				'label' => _('Notifications')
 			)
+			#array(
+			#	'url' => 'report4.php',
+			#	'label' => _('Notifications')
+			#)
 			#array(
 			#	'url' => 'setup.php',
 			#	'label' => _('Installation')

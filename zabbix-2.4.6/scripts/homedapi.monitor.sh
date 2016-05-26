@@ -12,10 +12,8 @@ function api_check(){
 	path="/homed/$1/config"
 	port=`cat $path/config.xml | grep local_port | sort -u | sed 's/.*>\(.*\)<.*$/\1/'|head -n 1`
 	url="http://127.0.0.1:$port/monitorqueryprocessstatus"
-	Time=`curl -o /dev/null -s -w %{time_total}"\n" "$url"`
-	tmp=`echo "$Time*1000" | bc`
-	int=`echo "$tmp" | awk '{printf "%d\n",$0}'`
-	var=`curl -s $url|grep ok`
+	Time=`curl --connect-timeout 1 --max-time 1 -o /dev/null -s -w %{time_total}"\n" "$url"`
+	var=`curl --connect-timeout 1 --max-time 1 -s "$url"`
 	result=`echo "$var" | grep ok`
 	if [ -n "$result" ];then
 		echo "${Time}"
@@ -25,4 +23,6 @@ function api_check(){
 }
 if [[ ! "$1" =~ redis|db_* ]];then
 	api_check "$1"
+else
+	echo "0.001"
 fi

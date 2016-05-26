@@ -17,6 +17,7 @@ else
 		echo "Did not find the core file!"
 	else
 		echo "find core file！"
+		gdb 
 	fi
 fi
 

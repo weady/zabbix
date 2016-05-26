@@ -27,22 +27,13 @@ uname -v = #1 SMP Wed Jun 13 18:24:36 EDT 2012
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /usr/java/jdk1.7.0_55/bin
-PATH: /usr/java/jdk1.7.0_55/jre/bin
-PATH: /hadoop/hbase/bin
-PATH: /hadoop/hadoop-1.2.1/bin
-PATH: /hadoop/zookeeper/bin
-PATH: /usr/local/ant/bin
 PATH: /usr/lib64/qt-3.3/bin
-PATH: /usr/java/jdk1.7.0_55/bin
-PATH: /usr/java/jdk1.7.0_55/jre/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /sbin
 PATH: /bin
 PATH: /usr/sbin
 PATH: /usr/bin
-PATH: /root/bin
 
 
 ## ----------- ##
@@ -2476,17 +2467,7 @@ configure:4766: checking for zone.h
 configure:4775: result: no
 configure:4660: checking nlist.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-configure:4684: $? = 0
-configure:4698: result: yes
-configure:4702: checking nlist.h presence
-configure:4717: gcc -E  conftest.c
-configure:4724: $? = 0
-configure:4738: result: yes
-configure:4766: checking for nlist.h
-configure:4775: result: yes
-configure:4660: checking kvm.h usability
-configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:87:17: error: kvm.h: No such file or directory
+conftest.c:86:19: error: nlist.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2540,7 +2521,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
 | #ifdef HAVE_SYS_TYPES_H
@@ -2575,11 +2555,11 @@ configure: failed program was:
 | #ifdef HAVE_UNISTD_H
 | # include <unistd.h>
 | #endif
-| #include <kvm.h>
+| #include <nlist.h>
 configure:4698: result: no
-configure:4702: checking kvm.h presence
+configure:4702: checking nlist.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:54:17: error: kvm.h: No such file or directory
+conftest.c:53:19: error: nlist.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2633,25 +2613,14 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | /* end confdefs.h.  */
-| #include <kvm.h>
+| #include <nlist.h>
 configure:4738: result: no
-configure:4766: checking for kvm.h
+configure:4766: checking for nlist.h
 configure:4775: result: no
-configure:4660: checking linux/kernel.h usability
+configure:4660: checking kvm.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-configure:4684: $? = 0
-configure:4698: result: yes
-configure:4702: checking linux/kernel.h presence
-configure:4717: gcc -E  conftest.c
-configure:4724: $? = 0
-configure:4738: result: yes
-configure:4766: checking for linux/kernel.h
-configure:4775: result: yes
-configure:4660: checking procinfo.h usability
-configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:88:22: error: procinfo.h: No such file or directory
+conftest.c:86:17: error: kvm.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2705,7 +2674,169 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
+| /* end confdefs.h.  */
+| #include <stdio.h>
+| #ifdef HAVE_SYS_TYPES_H
+| # include <sys/types.h>
+| #endif
+| #ifdef HAVE_SYS_STAT_H
+| # include <sys/stat.h>
+| #endif
+| #ifdef STDC_HEADERS
+| # include <stdlib.h>
+| # include <stddef.h>
+| #else
+| # ifdef HAVE_STDLIB_H
+| #  include <stdlib.h>
+| # endif
+| #endif
+| #ifdef HAVE_STRING_H
+| # if !defined STDC_HEADERS && defined HAVE_MEMORY_H
+| #  include <memory.h>
+| # endif
+| # include <string.h>
+| #endif
+| #ifdef HAVE_STRINGS_H
+| # include <strings.h>
+| #endif
+| #ifdef HAVE_INTTYPES_H
+| # include <inttypes.h>
+| #endif
+| #ifdef HAVE_STDINT_H
+| # include <stdint.h>
+| #endif
+| #ifdef HAVE_UNISTD_H
+| # include <unistd.h>
+| #endif
+| #include <kvm.h>
+configure:4698: result: no
+configure:4702: checking kvm.h presence
+configure:4717: gcc -E  conftest.c
+conftest.c:53:17: error: kvm.h: No such file or directory
+configure:4724: $? = 1
+configure: failed program was:
+| /* confdefs.h.  */
+| #define PACKAGE_NAME "Zabbix"
+| #define PACKAGE_TARNAME "zabbix"
+| #define PACKAGE_VERSION "2.4.6"
+| #define PACKAGE_STRING "Zabbix 2.4.6"
+| #define PACKAGE_BUGREPORT ""
+| #define PACKAGE "zabbix"
+| #define VERSION "2.4.6"
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_STDIO_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_NETDB_H 1
+| #define HAVE_SIGNAL_H 1
+| #define HAVE_SYSLOG_H 1
+| #define HAVE_TIME_H 1
+| #define HAVE_ERRNO_H 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_NETINET_IN_H 1
+| #define HAVE_MATH_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_DIRENT_H 1
+| #define HAVE_CTYPE_H 1
+| #define HAVE_FCNTL_H 1
+| #define HAVE_SYS_PARAM_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_SYS_VFS_H 1
+| #define HAVE_SYS_SYSINFO_H 1
+| #define HAVE_SYS_STATVFS_H 1
+| #define HAVE_SYS_STATFS_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_SYS_TIME_H 1
+| #define HAVE_SYS_SYSCALL_H 1
+| #define HAVE_SYS_SYSMACROS_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_PWD_H 1
+| #define HAVE_ARPA_NAMESER_H 1
+| #define HAVE_ASSERT_H 1
+| /* end confdefs.h.  */
+| #include <kvm.h>
+configure:4738: result: no
+configure:4766: checking for kvm.h
+configure:4775: result: no
+configure:4660: checking linux/kernel.h usability
+configure:4677: gcc -c -g -O2  conftest.c >&5
+configure:4684: $? = 0
+configure:4698: result: yes
+configure:4702: checking linux/kernel.h presence
+configure:4717: gcc -E  conftest.c
+configure:4724: $? = 0
+configure:4738: result: yes
+configure:4766: checking for linux/kernel.h
+configure:4775: result: yes
+configure:4660: checking procinfo.h usability
+configure:4677: gcc -c -g -O2  conftest.c >&5
+conftest.c:87:22: error: procinfo.h: No such file or directory
+configure:4684: $? = 1
+configure: failed program was:
+| /* confdefs.h.  */
+| #define PACKAGE_NAME "Zabbix"
+| #define PACKAGE_TARNAME "zabbix"
+| #define PACKAGE_VERSION "2.4.6"
+| #define PACKAGE_STRING "Zabbix 2.4.6"
+| #define PACKAGE_BUGREPORT ""
+| #define PACKAGE "zabbix"
+| #define VERSION "2.4.6"
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_STDIO_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_NETDB_H 1
+| #define HAVE_SIGNAL_H 1
+| #define HAVE_SYSLOG_H 1
+| #define HAVE_TIME_H 1
+| #define HAVE_ERRNO_H 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_NETINET_IN_H 1
+| #define HAVE_MATH_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_DIRENT_H 1
+| #define HAVE_CTYPE_H 1
+| #define HAVE_FCNTL_H 1
+| #define HAVE_SYS_PARAM_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_SYS_VFS_H 1
+| #define HAVE_SYS_SYSINFO_H 1
+| #define HAVE_SYS_STATVFS_H 1
+| #define HAVE_SYS_STATFS_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_SYS_TIME_H 1
+| #define HAVE_SYS_SYSCALL_H 1
+| #define HAVE_SYS_SYSMACROS_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_PWD_H 1
+| #define HAVE_ARPA_NAMESER_H 1
+| #define HAVE_ASSERT_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -2745,7 +2876,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking procinfo.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:55:22: error: procinfo.h: No such file or directory
+conftest.c:54:22: error: procinfo.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2799,7 +2930,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | /* end confdefs.h.  */
 | #include <procinfo.h>
@@ -2808,7 +2938,7 @@ configure:4766: checking for procinfo.h
 configure:4775: result: no
 configure:4660: checking sys/dk.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:88:20: error: sys/dk.h: No such file or directory
+conftest.c:87:20: error: sys/dk.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2862,7 +2992,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
@@ -2902,7 +3031,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking sys/dk.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:55:20: error: sys/dk.h: No such file or directory
+conftest.c:54:20: error: sys/dk.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -2956,7 +3085,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | /* end confdefs.h.  */
 | #include <sys/dk.h>
@@ -2985,7 +3113,7 @@ configure:4766: checking for pthread.h
 configure:4775: result: yes
 configure:4660: checking windows.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:90:21: error: windows.h: No such file or directory
+conftest.c:89:21: error: windows.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3039,7 +3167,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3081,7 +3208,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking windows.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:57:21: error: windows.h: No such file or directory
+conftest.c:56:21: error: windows.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3135,7 +3262,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3146,7 +3272,7 @@ configure:4766: checking for windows.h
 configure:4775: result: no
 configure:4660: checking process.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:90:21: error: process.h: No such file or directory
+conftest.c:89:21: error: process.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3200,7 +3326,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3242,7 +3367,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking process.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:57:21: error: process.h: No such file or directory
+conftest.c:56:21: error: process.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3296,7 +3421,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3307,7 +3431,7 @@ configure:4766: checking for process.h
 configure:4775: result: no
 configure:4660: checking conio.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:90:19: error: conio.h: No such file or directory
+conftest.c:89:19: error: conio.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3361,7 +3485,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3403,7 +3526,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking conio.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:57:19: error: conio.h: No such file or directory
+conftest.c:56:19: error: conio.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3457,7 +3580,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3498,7 +3620,7 @@ configure:4766: checking for stdarg.h
 configure:4775: result: yes
 configure:4660: checking winsock2.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:93:22: error: winsock2.h: No such file or directory
+conftest.c:92:22: error: winsock2.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3552,7 +3674,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3597,7 +3718,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking winsock2.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:60:22: error: winsock2.h: No such file or directory
+conftest.c:59:22: error: winsock2.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3651,7 +3772,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3665,7 +3785,7 @@ configure:4766: checking for winsock2.h
 configure:4775: result: no
 configure:4660: checking pdh.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:93:17: error: pdh.h: No such file or directory
+conftest.c:92:17: error: pdh.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3719,7 +3839,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3764,7 +3883,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking pdh.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:60:17: error: pdh.h: No such file or directory
+conftest.c:59:17: error: pdh.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3818,7 +3937,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3832,7 +3950,7 @@ configure:4766: checking for pdh.h
 configure:4775: result: no
 configure:4660: checking psapi.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:93:19: error: psapi.h: No such file or directory
+conftest.c:92:19: error: psapi.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3886,7 +4004,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -3931,7 +4048,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking psapi.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:60:19: error: psapi.h: No such file or directory
+conftest.c:59:19: error: psapi.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -3985,7 +4102,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4029,7 +4145,7 @@ configure:4766: checking for sys/shm.h
 configure:4775: result: yes
 configure:4660: checking Winldap.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:96:21: error: Winldap.h: No such file or directory
+conftest.c:95:21: error: Winldap.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4083,7 +4199,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4131,7 +4246,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking Winldap.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:63:21: error: Winldap.h: No such file or directory
+conftest.c:62:21: error: Winldap.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4185,7 +4300,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4212,7 +4326,7 @@ configure:4766: checking for sys/timeb.h
 configure:4775: result: yes
 configure:4660: checking Winber.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:97:20: error: Winber.h: No such file or directory
+conftest.c:96:20: error: Winber.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4266,7 +4380,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4315,7 +4428,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking Winber.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:64:20: error: Winber.h: No such file or directory
+conftest.c:63:20: error: Winber.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4369,7 +4482,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4387,17 +4499,7 @@ configure:4766: checking for Winber.h
 configure:4775: result: no
 configure:4660: checking lber.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-configure:4684: $? = 0
-configure:4698: result: yes
-configure:4702: checking lber.h presence
-configure:4717: gcc -E  conftest.c
-configure:4724: $? = 0
-configure:4738: result: yes
-configure:4766: checking for lber.h
-configure:4775: result: yes
-configure:4660: checking ws2tcpip.h usability
-configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:98:22: error: ws2tcpip.h: No such file or directory
+conftest.c:96:18: error: lber.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4451,7 +4553,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4462,7 +4563,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | /* end confdefs.h.  */
 | #include <stdio.h>
 | #ifdef HAVE_SYS_TYPES_H
@@ -4497,11 +4597,11 @@ configure: failed program was:
 | #ifdef HAVE_UNISTD_H
 | # include <unistd.h>
 | #endif
-| #include <ws2tcpip.h>
+| #include <lber.h>
 configure:4698: result: no
-configure:4702: checking ws2tcpip.h presence
+configure:4702: checking lber.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:65:22: error: ws2tcpip.h: No such file or directory
+conftest.c:63:18: error: lber.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4555,7 +4655,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4566,7 +4665,179 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
+| /* end confdefs.h.  */
+| #include <lber.h>
+configure:4738: result: no
+configure:4766: checking for lber.h
+configure:4775: result: no
+configure:4660: checking ws2tcpip.h usability
+configure:4677: gcc -c -g -O2  conftest.c >&5
+conftest.c:96:22: error: ws2tcpip.h: No such file or directory
+configure:4684: $? = 1
+configure: failed program was:
+| /* confdefs.h.  */
+| #define PACKAGE_NAME "Zabbix"
+| #define PACKAGE_TARNAME "zabbix"
+| #define PACKAGE_VERSION "2.4.6"
+| #define PACKAGE_STRING "Zabbix 2.4.6"
+| #define PACKAGE_BUGREPORT ""
+| #define PACKAGE "zabbix"
+| #define VERSION "2.4.6"
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_STDIO_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_NETDB_H 1
+| #define HAVE_SIGNAL_H 1
+| #define HAVE_SYSLOG_H 1
+| #define HAVE_TIME_H 1
+| #define HAVE_ERRNO_H 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_NETINET_IN_H 1
+| #define HAVE_MATH_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_DIRENT_H 1
+| #define HAVE_CTYPE_H 1
+| #define HAVE_FCNTL_H 1
+| #define HAVE_SYS_PARAM_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_SYS_VFS_H 1
+| #define HAVE_SYS_SYSINFO_H 1
+| #define HAVE_SYS_STATVFS_H 1
+| #define HAVE_SYS_STATFS_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_SYS_TIME_H 1
+| #define HAVE_SYS_SYSCALL_H 1
+| #define HAVE_SYS_SYSMACROS_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_PWD_H 1
+| #define HAVE_ARPA_NAMESER_H 1
+| #define HAVE_ASSERT_H 1
+| #define HAVE_LINUX_KERNEL_H 1
+| #define HAVE_SYS_RESOURCE_H 1
+| #define HAVE_PTHREAD_H 1
+| #define HAVE_SYS_WAIT_H 1
+| #define HAVE_REGEX_H 1
+| #define HAVE_STDARG_H 1
+| #define HAVE_SYS_SEM_H 1
+| #define HAVE_SYS_IPC_H 1
+| #define HAVE_SYS_SHM_H 1
+| #define HAVE_SYS_TIMEB_H 1
+| /* end confdefs.h.  */
+| #include <stdio.h>
+| #ifdef HAVE_SYS_TYPES_H
+| # include <sys/types.h>
+| #endif
+| #ifdef HAVE_SYS_STAT_H
+| # include <sys/stat.h>
+| #endif
+| #ifdef STDC_HEADERS
+| # include <stdlib.h>
+| # include <stddef.h>
+| #else
+| # ifdef HAVE_STDLIB_H
+| #  include <stdlib.h>
+| # endif
+| #endif
+| #ifdef HAVE_STRING_H
+| # if !defined STDC_HEADERS && defined HAVE_MEMORY_H
+| #  include <memory.h>
+| # endif
+| # include <string.h>
+| #endif
+| #ifdef HAVE_STRINGS_H
+| # include <strings.h>
+| #endif
+| #ifdef HAVE_INTTYPES_H
+| # include <inttypes.h>
+| #endif
+| #ifdef HAVE_STDINT_H
+| # include <stdint.h>
+| #endif
+| #ifdef HAVE_UNISTD_H
+| # include <unistd.h>
+| #endif
+| #include <ws2tcpip.h>
+configure:4698: result: no
+configure:4702: checking ws2tcpip.h presence
+configure:4717: gcc -E  conftest.c
+conftest.c:63:22: error: ws2tcpip.h: No such file or directory
+configure:4724: $? = 1
+configure: failed program was:
+| /* confdefs.h.  */
+| #define PACKAGE_NAME "Zabbix"
+| #define PACKAGE_TARNAME "zabbix"
+| #define PACKAGE_VERSION "2.4.6"
+| #define PACKAGE_STRING "Zabbix 2.4.6"
+| #define PACKAGE_BUGREPORT ""
+| #define PACKAGE "zabbix"
+| #define VERSION "2.4.6"
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_STDIO_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_NETDB_H 1
+| #define HAVE_SIGNAL_H 1
+| #define HAVE_SYSLOG_H 1
+| #define HAVE_TIME_H 1
+| #define HAVE_ERRNO_H 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_NETINET_IN_H 1
+| #define HAVE_MATH_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_DIRENT_H 1
+| #define HAVE_CTYPE_H 1
+| #define HAVE_FCNTL_H 1
+| #define HAVE_SYS_PARAM_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_SYS_VFS_H 1
+| #define HAVE_SYS_SYSINFO_H 1
+| #define HAVE_SYS_STATVFS_H 1
+| #define HAVE_SYS_STATFS_H 1
+| #define HAVE_SYS_SOCKET_H 1
+| #define HAVE_ARPA_INET_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_SYS_TIME_H 1
+| #define HAVE_SYS_SYSCALL_H 1
+| #define HAVE_SYS_SYSMACROS_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_PWD_H 1
+| #define HAVE_ARPA_NAMESER_H 1
+| #define HAVE_ASSERT_H 1
+| #define HAVE_LINUX_KERNEL_H 1
+| #define HAVE_SYS_RESOURCE_H 1
+| #define HAVE_PTHREAD_H 1
+| #define HAVE_SYS_WAIT_H 1
+| #define HAVE_REGEX_H 1
+| #define HAVE_STDARG_H 1
+| #define HAVE_SYS_SEM_H 1
+| #define HAVE_SYS_IPC_H 1
+| #define HAVE_SYS_SHM_H 1
+| #define HAVE_SYS_TIMEB_H 1
 | /* end confdefs.h.  */
 | #include <ws2tcpip.h>
 configure:4738: result: no
@@ -4606,7 +4877,7 @@ configure:4766: checking for execinfo.h
 configure:4775: result: yes
 configure:4660: checking libperfstat.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:102:25: error: libperfstat.h: No such file or directory
+conftest.c:100:25: error: libperfstat.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4660,7 +4931,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4671,7 +4941,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -4714,7 +4983,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking libperfstat.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:69:25: error: libperfstat.h: No such file or directory
+conftest.c:67:25: error: libperfstat.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4768,7 +5037,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4779,7 +5047,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -4791,7 +5058,7 @@ configure:4766: checking for libperfstat.h
 configure:4775: result: no
 configure:4660: checking sys/systemcfg.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:102:27: error: sys/systemcfg.h: No such file or directory
+conftest.c:100:27: error: sys/systemcfg.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4845,7 +5112,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4856,7 +5122,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -4899,7 +5164,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking sys/systemcfg.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:69:27: error: sys/systemcfg.h: No such file or directory
+conftest.c:67:27: error: sys/systemcfg.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -4953,7 +5218,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -4964,7 +5228,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -4976,7 +5239,7 @@ configure:4766: checking for sys/systemcfg.h
 configure:4775: result: no
 configure:4660: checking sys/mnttab.h usability
 configure:4677: gcc -c -g -O2  conftest.c >&5
-conftest.c:102:24: error: sys/mnttab.h: No such file or directory
+conftest.c:100:24: error: sys/mnttab.h: No such file or directory
 configure:4684: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -5030,7 +5293,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5041,7 +5303,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5084,7 +5345,7 @@ configure: failed program was:
 configure:4698: result: no
 configure:4702: checking sys/mnttab.h presence
 configure:4717: gcc -E  conftest.c
-conftest.c:69:24: error: sys/mnttab.h: No such file or directory
+conftest.c:67:24: error: sys/mnttab.h: No such file or directory
 configure:4724: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -5138,7 +5399,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5149,7 +5409,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5209,7 +5468,7 @@ configure:4918: $? = 0
 configure:4935: result: yes
 configure:4870: checking for net/if_mib.h
 configure:4911: gcc -c -g -O2  conftest.c >&5
-conftest.c:97:24: error: net/if_mib.h: No such file or directory
+conftest.c:95:24: error: net/if_mib.h: No such file or directory
 configure:4918: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -5263,7 +5522,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5274,7 +5532,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5316,7 +5573,7 @@ configure:4990: $? = 0
 configure:5007: result: yes
 configure:4955: checking for sys/proc.h
 configure:4983: gcc -c -g -O2  conftest.c >&5
-conftest.c:85:22: error: sys/proc.h: No such file or directory
+conftest.c:83:22: error: sys/proc.h: No such file or directory
 configure:4990: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -5370,7 +5627,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5381,7 +5637,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5423,7 +5678,7 @@ configure:5122: $? = 0
 configure:5139: result: yes
 configure:5156: checking for devstat.h
 configure:5181: gcc -c -g -O2  conftest.c >&5
-conftest.c:86:21: error: devstat.h: No such file or directory
+conftest.c:84:21: error: devstat.h: No such file or directory
 configure:5188: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -5477,7 +5732,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5488,7 +5742,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5519,8 +5772,8 @@ configure:5268: $? = 0
 configure:5299: result: none required
 configure:5307: checking for library containing kstat_open
 configure:5348: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccDov5rn.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `kstat_open'
+/tmp/ccYGejCP.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `kstat_open'
 collect2: ld returned 1 exit status
 configure:5355: $? = 1
 configure: failed program was:
@@ -5575,7 +5828,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5586,7 +5838,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5674,7 +5925,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5685,7 +5935,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5724,8 +5973,8 @@ configure:5442: $? = 0
 configure:5473: result: none required
 configure:5481: checking for library containing clock_gettime
 configure:5522: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccT31L5B.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `clock_gettime'
+/tmp/ccqK01m1.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `clock_gettime'
 collect2: ld returned 1 exit status
 configure:5529: $? = 1
 configure: failed program was:
@@ -5780,7 +6029,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5791,7 +6039,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5828,8 +6075,8 @@ configure:5529: $? = 0
 configure:5560: result: -lrt
 configure:5568: checking for library containing dlopen
 configure:5609: gcc -o conftest -g -O2   conftest.c -lrt  >&5
-/tmp/ccvrFdTR.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `dlopen'
+/tmp/ccZOiknZ.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `dlopen'
 collect2: ld returned 1 exit status
 configure:5616: $? = 1
 configure: failed program was:
@@ -5884,7 +6131,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5895,7 +6141,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -5932,8 +6177,8 @@ configure:5616: $? = 0
 configure:5647: result: -ldl
 configure:5656: checking for library containing perfstat_memory_total
 configure:5697: gcc -o conftest -g -O2   conftest.c -ldl -lrt  >&5
-/tmp/cc352Pq4.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `perfstat_memory_total'
+/tmp/ccJFJtY7.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `perfstat_memory_total'
 collect2: ld returned 1 exit status
 configure:5704: $? = 1
 configure: failed program was:
@@ -5988,7 +6233,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -5999,7 +6243,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6087,7 +6330,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6098,7 +6340,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6133,8 +6374,8 @@ configure: failed program was:
 configure:5735: result: no
 configure:5747: checking for library containing devstat_getdevs
 configure:5788: gcc -o conftest -g -O2   conftest.c -ldl -lrt  >&5
-/tmp/ccGPpO72.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `devstat_getdevs'
+/tmp/ccDEa8if.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `devstat_getdevs'
 collect2: ld returned 1 exit status
 configure:5795: $? = 1
 configure: failed program was:
@@ -6189,7 +6430,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6200,7 +6440,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6288,7 +6527,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6299,7 +6537,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6334,8 +6571,8 @@ configure: failed program was:
 configure:5826: result: no
 configure:5838: checking for library containing getdevs
 configure:5879: gcc -o conftest -g -O2   conftest.c -ldl -lrt  >&5
-/tmp/ccEoLy5c.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:91: undefined reference to `getdevs'
+/tmp/ccrVz6pm.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:89: undefined reference to `getdevs'
 collect2: ld returned 1 exit status
 configure:5886: $? = 1
 configure: failed program was:
@@ -6390,7 +6627,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6401,7 +6637,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6489,7 +6724,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6500,7 +6734,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6598,7 +6831,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6609,7 +6841,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6640,8 +6871,8 @@ configure: failed program was:
 configure:6149: result: no
 configure:6163: checking for DNS lookup functions
 configure:6214: gcc -o conftest -g -O2   conftest.c -lm -ldl -lrt   >&5
-/tmp/ccwTpIJH.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:109: undefined reference to `__res_query'
+/tmp/cchT6onH.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:107: undefined reference to `__res_query'
 collect2: ld returned 1 exit status
 configure:6221: $? = 1
 configure: failed program was:
@@ -6696,7 +6927,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6707,7 +6937,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6776,7 +7005,7 @@ configure:7008: gcc -c -g -O2  conftest.c >&5
 configure:7015: $? = 0
 configure:7042: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:119: error: expected expression before ')' token
+conftest.c:117: error: expected expression before ')' token
 configure:7049: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -6830,7 +7059,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6841,7 +7069,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -6918,7 +7145,7 @@ configure:7275: result: sival_int
 configure:7288: checking for union semun
 configure:7315: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:93: error: storage size of 'foo' isn't known
+conftest.c:91: error: storage size of 'foo' isn't known
 configure:7322: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -6972,7 +7199,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -6983,7 +7209,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7021,25 +7246,25 @@ configure:7338: result: no
 configure:7344: checking for struct swaptable in sys/swap.h
 configure:7426: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:106: error: 'SC_GETNSWP' undeclared (first use in this function)
-conftest.c:106: error: (Each undeclared identifier is reported only once
-conftest.c:106: error: for each function it appears in.)
-conftest.c:110: error: invalid application of 'sizeof' to incomplete type 'struct swapent' 
-conftest.c:115: error: dereferencing pointer to incomplete type
-conftest.c:120: error: dereferencing pointer to incomplete type
-conftest.c:124: error: increment of pointer to unknown structure
-conftest.c:124: error: arithmetic on pointer to an incomplete type
-conftest.c:124: error: dereferencing pointer to incomplete type
-conftest.c:128: error: 'SC_LIST' undeclared (first use in this function)
-conftest.c:132: error: dereferencing pointer to incomplete type
-conftest.c:137: error: dereferencing pointer to incomplete type
-conftest.c:137: error: 'ST_INDEL' undeclared (first use in this function)
+conftest.c:104: error: 'SC_GETNSWP' undeclared (first use in this function)
+conftest.c:104: error: (Each undeclared identifier is reported only once
+conftest.c:104: error: for each function it appears in.)
+conftest.c:108: error: invalid application of 'sizeof' to incomplete type 'struct swapent' 
+conftest.c:113: error: dereferencing pointer to incomplete type
+conftest.c:118: error: dereferencing pointer to incomplete type
+conftest.c:122: error: increment of pointer to unknown structure
+conftest.c:122: error: arithmetic on pointer to an incomplete type
+conftest.c:122: error: dereferencing pointer to incomplete type
+conftest.c:126: error: 'SC_LIST' undeclared (first use in this function)
+conftest.c:130: error: dereferencing pointer to incomplete type
+conftest.c:135: error: dereferencing pointer to incomplete type
+conftest.c:135: error: 'ST_INDEL' undeclared (first use in this function)
+conftest.c:136: error: dereferencing pointer to incomplete type
+conftest.c:136: error: 'ST_DOINGDEL' undeclared (first use in this function)
 conftest.c:138: error: dereferencing pointer to incomplete type
-conftest.c:138: error: 'ST_DOINGDEL' undeclared (first use in this function)
-conftest.c:140: error: dereferencing pointer to incomplete type
-conftest.c:141: error: dereferencing pointer to incomplete type
-conftest.c:142: error: increment of pointer to unknown structure
-conftest.c:142: error: arithmetic on pointer to an incomplete type
+conftest.c:139: error: dereferencing pointer to incomplete type
+conftest.c:140: error: increment of pointer to unknown structure
+conftest.c:140: error: arithmetic on pointer to an incomplete type
 configure:7433: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -7093,7 +7318,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7104,7 +7328,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7196,9 +7419,9 @@ configure: failed program was:
 configure:7449: result: no
 configure:7455: checking for struct sensordev in sys/sensors.h
 configure:7484: gcc -c -g -O2  conftest.c >&5
-conftest.c:88:25: error: sys/sensors.h: No such file or directory
+conftest.c:86:25: error: sys/sensors.h: No such file or directory
 conftest.c: In function 'main':
-conftest.c:92: error: storage size of 'sensordev' isn't known
+conftest.c:90: error: storage size of 'sensordev' isn't known
 configure:7491: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -7252,7 +7475,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7263,7 +7485,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7303,7 +7524,7 @@ configure:7507: result: no
 configure:7513: checking for struct statvfs64 in sys/statvfs.h
 configure:7547: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:97: error: storage size of 's' isn't known
+conftest.c:95: error: storage size of 's' isn't known
 configure:7554: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -7357,7 +7578,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7368,7 +7588,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7413,7 +7632,7 @@ configure:7570: result: no
 configure:7576: checking for struct statfs64 in sys/statfs.h
 configure:7610: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:97: error: storage size of 's' isn't known
+conftest.c:95: error: storage size of 's' isn't known
 configure:7617: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -7467,7 +7686,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7478,7 +7696,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7578,8 +7795,8 @@ configure:8400: $? = 0
 configure:8413: result: yes
 configure:8427: checking for function setproctitle()
 configure:8455: gcc -o conftest -g -O2   conftest.c -lm -ldl -lrt  -lresolv >&5
-/tmp/ccA2NRTs.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:107: undefined reference to `setproctitle'
+/tmp/ccxajx6W.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:105: undefined reference to `setproctitle'
 collect2: ld returned 1 exit status
 configure:8462: $? = 1
 configure: failed program was:
@@ -7634,7 +7851,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7645,7 +7861,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7697,8 +7912,8 @@ configure: failed program was:
 configure:8481: result: no
 configure:8489: checking for function sysctlbyname()
 configure:8524: gcc -o conftest -g -O2   conftest.c -lm -ldl -lrt  -lresolv >&5
-/tmp/ccQBre4z.o: In function `main':
-/usr/local/src/zabbix-2.4.6/conftest.c:114: undefined reference to `sysctlbyname'
+/tmp/ccylcHn2.o: In function `main':
+/usr/local/src/zabbix-2.4.6/conftest.c:112: undefined reference to `sysctlbyname'
 collect2: ld returned 1 exit status
 configure:8531: $? = 1
 configure: failed program was:
@@ -7753,7 +7968,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7764,7 +7978,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7824,9 +8037,9 @@ configure:8550: result: no
 configure:8558: checking for function sysctl (KERN_BOOTTIME)
 configure:8604: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:122: error: 'KERN_BOOTTIME' undeclared (first use in this function)
-conftest.c:122: error: (Each undeclared identifier is reported only once
-conftest.c:122: error: for each function it appears in.)
+conftest.c:120: error: 'KERN_BOOTTIME' undeclared (first use in this function)
+conftest.c:120: error: (Each undeclared identifier is reported only once
+conftest.c:120: error: for each function it appears in.)
 configure:8611: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -7880,7 +8093,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -7891,7 +8103,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -7962,10 +8173,10 @@ configure:8627: result: no
 configure:8633: checking for function sysctl (HW_NCPU)
 configure:8675: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:117: error: 'CTL_HW' undeclared (first use in this function)
-conftest.c:117: error: (Each undeclared identifier is reported only once
-conftest.c:117: error: for each function it appears in.)
-conftest.c:118: error: 'HW_NCPU' undeclared (first use in this function)
+conftest.c:115: error: 'CTL_HW' undeclared (first use in this function)
+conftest.c:115: error: (Each undeclared identifier is reported only once
+conftest.c:115: error: for each function it appears in.)
+conftest.c:116: error: 'HW_NCPU' undeclared (first use in this function)
 configure:8682: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8019,7 +8230,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8030,7 +8240,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8097,9 +8306,9 @@ configure:8698: result: no
 configure:8704: checking for function sysctl (KERN_MAXFILES)
 configure:8746: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:118: error: 'KERN_MAXFILES' undeclared (first use in this function)
-conftest.c:118: error: (Each undeclared identifier is reported only once
-conftest.c:118: error: for each function it appears in.)
+conftest.c:116: error: 'KERN_MAXFILES' undeclared (first use in this function)
+conftest.c:116: error: (Each undeclared identifier is reported only once
+conftest.c:116: error: for each function it appears in.)
 configure:8753: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8153,7 +8362,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8164,7 +8372,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8231,9 +8438,9 @@ configure:8769: result: no
 configure:8775: checking for function sysctl (KERN_MAXPROC)
 configure:8817: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:118: error: 'KERN_MAXPROC' undeclared (first use in this function)
-conftest.c:118: error: (Each undeclared identifier is reported only once
-conftest.c:118: error: for each function it appears in.)
+conftest.c:116: error: 'KERN_MAXPROC' undeclared (first use in this function)
+conftest.c:116: error: (Each undeclared identifier is reported only once
+conftest.c:116: error: for each function it appears in.)
 configure:8824: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8287,7 +8494,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8298,7 +8504,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8365,21 +8570,21 @@ configure:8840: result: no
 configure:8846: checking for function sysctl (KERN_CPTIME,KERN_CPTIME2)
 configure:8896: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:113: error: 'CP_USER' undeclared (first use in this function)
-conftest.c:113: error: (Each undeclared identifier is reported only once
-conftest.c:113: error: for each function it appears in.)
-conftest.c:113: error: 'CP_NICE' undeclared (first use in this function)
-conftest.c:113: error: 'CP_SYS' undeclared (first use in this function)
-conftest.c:113: error: 'CP_INTR' undeclared (first use in this function)
-conftest.c:113: error: 'CP_IDLE' undeclared (first use in this function)
-conftest.c:116: error: 'CPUSTATES' undeclared (first use in this function)
-conftest.c:117: error: 'KERN_CPTIME' undeclared (first use in this function)
-conftest.c:117: warning: initialization makes integer from pointer without a cast
-conftest.c:119: warning: assignment makes integer from pointer without a cast
-conftest.c:120: error: 'NULL' undeclared (first use in this function)
-conftest.c:125: error: 'KERN_CPTIME2' undeclared (first use in this function)
-conftest.c:125: warning: initialization makes integer from pointer without a cast
-conftest.c:127: warning: assignment makes integer from pointer without a cast
+conftest.c:111: error: 'CP_USER' undeclared (first use in this function)
+conftest.c:111: error: (Each undeclared identifier is reported only once
+conftest.c:111: error: for each function it appears in.)
+conftest.c:111: error: 'CP_NICE' undeclared (first use in this function)
+conftest.c:111: error: 'CP_SYS' undeclared (first use in this function)
+conftest.c:111: error: 'CP_INTR' undeclared (first use in this function)
+conftest.c:111: error: 'CP_IDLE' undeclared (first use in this function)
+conftest.c:114: error: 'CPUSTATES' undeclared (first use in this function)
+conftest.c:115: error: 'KERN_CPTIME' undeclared (first use in this function)
+conftest.c:115: warning: initialization makes integer from pointer without a cast
+conftest.c:117: warning: assignment makes integer from pointer without a cast
+conftest.c:118: error: 'NULL' undeclared (first use in this function)
+conftest.c:123: error: 'KERN_CPTIME2' undeclared (first use in this function)
+conftest.c:123: warning: initialization makes integer from pointer without a cast
+conftest.c:125: warning: assignment makes integer from pointer without a cast
 configure:8903: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8433,7 +8638,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8444,7 +8648,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8531,7 +8734,7 @@ configure:9096: result: yes
 configure:9109: checking return type of signal handlers
 configure:9137: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
-conftest.c:108: error: void value not ignored as it ought to be
+conftest.c:106: error: void value not ignored as it ought to be
 configure:9144: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8585,7 +8788,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8596,7 +8798,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8681,12 +8882,12 @@ configure:9760: result: yes
 configure:9773: checking for long long format
 configure:9804: gcc -o conftest -g -O2   conftest.c -lm -ldl -lrt  -lresolv >&5
 conftest.c: In function 'main':
-conftest.c:117: error: 'uint64_t' undeclared (first use in this function)
-conftest.c:117: error: (Each undeclared identifier is reported only once
-conftest.c:117: error: for each function it appears in.)
-conftest.c:117: error: expected ';' before 'i'
-conftest.c:119: warning: incompatible implicit declaration of built-in function 'sscanf'
-conftest.c:119: error: 'i' undeclared (first use in this function)
+conftest.c:115: error: 'uint64_t' undeclared (first use in this function)
+conftest.c:115: error: (Each undeclared identifier is reported only once
+conftest.c:115: error: for each function it appears in.)
+conftest.c:115: error: expected ';' before 'i'
+conftest.c:117: warning: incompatible implicit declaration of built-in function 'sscanf'
+conftest.c:117: error: 'i' undeclared (first use in this function)
 configure:9808: $? = 1
 configure: program exited with status 1
 configure: failed program was:
@@ -8741,7 +8942,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8752,7 +8952,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8821,13 +9020,13 @@ configure:9876: $? = 0
 configure:9885: result: yes
 configure:9901: checking for libperfstat 5.2.0.40 fileset
 configure:9926: gcc -c -g -O2  conftest.c >&5
-conftest.c:113:25: error: libperfstat.h: No such file or directory
+conftest.c:111:25: error: libperfstat.h: No such file or directory
 conftest.c: In function 'main':
-conftest.c:117: error: 'perfstat_memory_total_t' undeclared (first use in this function)
-conftest.c:117: error: (Each undeclared identifier is reported only once
-conftest.c:117: error: for each function it appears in.)
-conftest.c:117: error: expected ';' before 'memstats'
-conftest.c:118: error: 'memstats' undeclared (first use in this function)
+conftest.c:115: error: 'perfstat_memory_total_t' undeclared (first use in this function)
+conftest.c:115: error: (Each undeclared identifier is reported only once
+conftest.c:115: error: for each function it appears in.)
+conftest.c:115: error: expected ';' before 'memstats'
+conftest.c:116: error: 'memstats' undeclared (first use in this function)
 configure:9933: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -8881,7 +9080,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -8892,7 +9090,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -8955,13 +9152,13 @@ configure: failed program was:
 configure:9949: result: no
 configure:9955: checking for libperfstat 5.3.0.60 fileset
 configure:9984: gcc -c -g -O2  conftest.c >&5
-conftest.c:113:25: error: libperfstat.h: No such file or directory
+conftest.c:111:25: error: libperfstat.h: No such file or directory
 conftest.c: In function 'main':
-conftest.c:117: error: 'perfstat_partition_total_t' undeclared (first use in this function)
-conftest.c:117: error: (Each undeclared identifier is reported only once
-conftest.c:117: error: for each function it appears in.)
-conftest.c:117: error: expected ';' before 'lparstats'
-conftest.c:118: error: 'lparstats' undeclared (first use in this function)
+conftest.c:115: error: 'perfstat_partition_total_t' undeclared (first use in this function)
+conftest.c:115: error: (Each undeclared identifier is reported only once
+conftest.c:115: error: for each function it appears in.)
+conftest.c:115: error: expected ';' before 'lparstats'
+conftest.c:116: error: 'lparstats' undeclared (first use in this function)
 configure:9991: $? = 1
 configure: failed program was:
 | /* confdefs.h.  */
@@ -9015,7 +9212,6 @@ configure: failed program was:
 | #define HAVE_PWD_H 1
 | #define HAVE_ARPA_NAMESER_H 1
 | #define HAVE_ASSERT_H 1
-| #define HAVE_NLIST_H 1
 | #define HAVE_LINUX_KERNEL_H 1
 | #define HAVE_SYS_RESOURCE_H 1
 | #define HAVE_PTHREAD_H 1
@@ -9026,7 +9222,6 @@ configure: failed program was:
 | #define HAVE_SYS_IPC_H 1
 | #define HAVE_SYS_SHM_H 1
 | #define HAVE_SYS_TIMEB_H 1
-| #define HAVE_LBER_H 1
 | #define HAVE_INTTYPES_H 1
 | #define HAVE_SYS_FILE_H 1
 | #define HAVE_GRP_H 1
@@ -9124,77 +9319,77 @@ generated by GNU Autoconf 2.63.  Invocation command line was
 
 on master
 
-config.status:1025: creating Makefile
-config.status:1025: creating database/Makefile
-config.status:1025: creating misc/Makefile
-config.status:1025: creating src/Makefile
-config.status:1025: creating src/libs/Makefile
-config.status:1025: creating src/libs/zbxlog/Makefile
-config.status:1025: creating src/libs/zbxalgo/Makefile
-config.status:1025: creating src/libs/zbxmemory/Makefile
-config.status:1025: creating src/libs/zbxcrypto/Makefile
-config.status:1025: creating src/libs/zbxconf/Makefile
-config.status:1025: creating src/libs/zbxdbcache/Makefile
-config.status:1025: creating src/libs/zbxdbhigh/Makefile
-config.status:1025: creating src/libs/zbxmedia/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/Makefile
-config.status:1025: creating src/libs/zbxcommon/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/agent/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/common/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/simple/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/linux/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/aix/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/freebsd/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/hpux/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/openbsd/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/osx/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/solaris/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/osf/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/netbsd/Makefile
-config.status:1025: creating src/libs/zbxsysinfo/unknown/Makefile
-config.status:1025: creating src/libs/zbxnix/Makefile
-config.status:1025: creating src/libs/zbxsys/Makefile
-config.status:1025: creating src/libs/zbxcomms/Makefile
-config.status:1025: creating src/libs/zbxcommshigh/Makefile
-config.status:1025: creating src/libs/zbxdb/Makefile
-config.status:1025: creating src/libs/zbxdbupgrade/Makefile
-config.status:1025: creating src/libs/zbxjson/Makefile
-config.status:1025: creating src/libs/zbxserver/Makefile
-config.status:1025: creating src/libs/zbxicmpping/Makefile
-config.status:1025: creating src/libs/zbxexec/Makefile
-config.status:1025: creating src/libs/zbxself/Makefile
-config.status:1025: creating src/libs/zbxmodules/Makefile
-config.status:1025: creating src/libs/zbxregexp/Makefile
-config.status:1025: creating src/zabbix_agent/Makefile
-config.status:1025: creating src/zabbix_get/Makefile
-config.status:1025: creating src/zabbix_sender/Makefile
-config.status:1025: creating src/zabbix_server/Makefile
-config.status:1025: creating src/zabbix_server/alerter/Makefile
-config.status:1025: creating src/zabbix_server/dbsyncer/Makefile
-config.status:1025: creating src/zabbix_server/dbconfig/Makefile
-config.status:1025: creating src/zabbix_server/discoverer/Makefile
-config.status:1025: creating src/zabbix_server/housekeeper/Makefile
-config.status:1025: creating src/zabbix_server/httppoller/Makefile
-config.status:1025: creating src/zabbix_server/pinger/Makefile
-config.status:1025: creating src/zabbix_server/poller/Makefile
-config.status:1025: creating src/zabbix_server/snmptrapper/Makefile
-config.status:1025: creating src/zabbix_server/timer/Makefile
-config.status:1025: creating src/zabbix_server/trapper/Makefile
-config.status:1025: creating src/zabbix_server/watchdog/Makefile
-config.status:1025: creating src/zabbix_server/escalator/Makefile
-config.status:1025: creating src/zabbix_server/proxypoller/Makefile
-config.status:1025: creating src/zabbix_server/selfmon/Makefile
-config.status:1025: creating src/zabbix_server/vmware/Makefile
-config.status:1025: creating src/zabbix_proxy/Makefile
-config.status:1025: creating src/zabbix_proxy/heart/Makefile
-config.status:1025: creating src/zabbix_proxy/housekeeper/Makefile
-config.status:1025: creating src/zabbix_proxy/proxyconfig/Makefile
-config.status:1025: creating src/zabbix_proxy/datasender/Makefile
-config.status:1025: creating src/zabbix_java/Makefile
-config.status:1025: creating upgrades/Makefile
-config.status:1025: creating man/Makefile
-config.status:1025: creating include/config.h
-config.status:1299: executing depfiles commands
+config.status:1023: creating Makefile
+config.status:1023: creating database/Makefile
+config.status:1023: creating misc/Makefile
+config.status:1023: creating src/Makefile
+config.status:1023: creating src/libs/Makefile
+config.status:1023: creating src/libs/zbxlog/Makefile
+config.status:1023: creating src/libs/zbxalgo/Makefile
+config.status:1023: creating src/libs/zbxmemory/Makefile
+config.status:1023: creating src/libs/zbxcrypto/Makefile
+config.status:1023: creating src/libs/zbxconf/Makefile
+config.status:1023: creating src/libs/zbxdbcache/Makefile
+config.status:1023: creating src/libs/zbxdbhigh/Makefile
+config.status:1023: creating src/libs/zbxmedia/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/Makefile
+config.status:1023: creating src/libs/zbxcommon/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/agent/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/common/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/simple/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/linux/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/aix/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/freebsd/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/hpux/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/openbsd/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/osx/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/solaris/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/osf/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/netbsd/Makefile
+config.status:1023: creating src/libs/zbxsysinfo/unknown/Makefile
+config.status:1023: creating src/libs/zbxnix/Makefile
+config.status:1023: creating src/libs/zbxsys/Makefile
+config.status:1023: creating src/libs/zbxcomms/Makefile
+config.status:1023: creating src/libs/zbxcommshigh/Makefile
+config.status:1023: creating src/libs/zbxdb/Makefile
+config.status:1023: creating src/libs/zbxdbupgrade/Makefile
+config.status:1023: creating src/libs/zbxjson/Makefile
+config.status:1023: creating src/libs/zbxserver/Makefile
+config.status:1023: creating src/libs/zbxicmpping/Makefile
+config.status:1023: creating src/libs/zbxexec/Makefile
+config.status:1023: creating src/libs/zbxself/Makefile
+config.status:1023: creating src/libs/zbxmodules/Makefile
+config.status:1023: creating src/libs/zbxregexp/Makefile
+config.status:1023: creating src/zabbix_agent/Makefile
+config.status:1023: creating src/zabbix_get/Makefile
+config.status:1023: creating src/zabbix_sender/Makefile
+config.status:1023: creating src/zabbix_server/Makefile
+config.status:1023: creating src/zabbix_server/alerter/Makefile
+config.status:1023: creating src/zabbix_server/dbsyncer/Makefile
+config.status:1023: creating src/zabbix_server/dbconfig/Makefile
+config.status:1023: creating src/zabbix_server/discoverer/Makefile
+config.status:1023: creating src/zabbix_server/housekeeper/Makefile
+config.status:1023: creating src/zabbix_server/httppoller/Makefile
+config.status:1023: creating src/zabbix_server/pinger/Makefile
+config.status:1023: creating src/zabbix_server/poller/Makefile
+config.status:1023: creating src/zabbix_server/snmptrapper/Makefile
+config.status:1023: creating src/zabbix_server/timer/Makefile
+config.status:1023: creating src/zabbix_server/trapper/Makefile
+config.status:1023: creating src/zabbix_server/watchdog/Makefile
+config.status:1023: creating src/zabbix_server/escalator/Makefile
+config.status:1023: creating src/zabbix_server/proxypoller/Makefile
+config.status:1023: creating src/zabbix_server/selfmon/Makefile
+config.status:1023: creating src/zabbix_server/vmware/Makefile
+config.status:1023: creating src/zabbix_proxy/Makefile
+config.status:1023: creating src/zabbix_proxy/heart/Makefile
+config.status:1023: creating src/zabbix_proxy/housekeeper/Makefile
+config.status:1023: creating src/zabbix_proxy/proxyconfig/Makefile
+config.status:1023: creating src/zabbix_proxy/datasender/Makefile
+config.status:1023: creating src/zabbix_java/Makefile
+config.status:1023: creating upgrades/Makefile
+config.status:1023: creating man/Makefile
+config.status:1023: creating include/config.h
+config.status:1297: executing depfiles commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -9250,7 +9445,7 @@ ac_cv_header_inttypes_h=yes
 ac_cv_header_knlist_h=no
 ac_cv_header_kstat_h=no
 ac_cv_header_kvm_h=no
-ac_cv_header_lber_h=yes
+ac_cv_header_lber_h=no
 ac_cv_header_libperfstat_h=no
 ac_cv_header_linux_kernel_h=yes
 ac_cv_header_mach_host_info_h=no
@@ -9263,7 +9458,7 @@ ac_cv_header_net_if_h=yes
 ac_cv_header_net_if_mib_h=no
 ac_cv_header_netdb_h=yes
 ac_cv_header_netinet_in_h=yes
-ac_cv_header_nlist_h=yes
+ac_cv_header_nlist_h=no
 ac_cv_header_pdh_h=no
 ac_cv_header_process_h=no
 ac_cv_header_procinfo_h=no
@@ -9586,7 +9781,6 @@ target_alias=''
 #define HAVE_PWD_H 1
 #define HAVE_ARPA_NAMESER_H 1
 #define HAVE_ASSERT_H 1
-#define HAVE_NLIST_H 1
 #define HAVE_LINUX_KERNEL_H 1
 #define HAVE_SYS_RESOURCE_H 1
 #define HAVE_PTHREAD_H 1
@@ -9597,7 +9791,6 @@ target_alias=''
 #define HAVE_SYS_IPC_H 1
 #define HAVE_SYS_SHM_H 1
 #define HAVE_SYS_TIMEB_H 1
-#define HAVE_LBER_H 1
 #define HAVE_INTTYPES_H 1
 #define HAVE_SYS_FILE_H 1
 #define HAVE_GRP_H 1

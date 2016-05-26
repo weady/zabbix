@@ -21,19 +21,22 @@
 #f_ts_current---一般时移均数 f_kts_current---一键时移均数 f_live_current---直播均数
 #f_d_current---下载均数 
 #传入的三个参数，$1,$3 确定了数据表，$2确定了查询字段
-# $1 是通过check.concurrent.sh 脚本获取的{#SRVID} $2 取值范围是[total,movie,tr,ts,kts,live,d]
+# $1 是通过check.concurrent.sh 脚本获取的{#SRVID} $2 取值范围是[total,movie,tr,ts,kts,live,d,ts_total]
 # $3 的取值范围[total,stb,smartcard,mobile,pad,pc]
 
+#--------------------------------------------------------
+#通用变量
 serviceid=$1 
 value=$2
 equipment_type=$3
-date_time=`date +%Y-%m-%d -d "3 days ago"`
+date_time=`date +%Y-%m-%d -d "1 days ago"`
 host=`cat /homed/config_comm.xml  | grep 'mt_db_ip' | awk -F '[><]' '{print $3}'`
 user='root'
 passwd=`cat /homed/config_comm.xml  | grep 'mt_db_pwd' | awk -F '[><]' '{print $3}'`
 database='homed_maintain'
 mysql_cmd="mysql -B -u$user -p$passwd -h$host $database"
 
+#--------------------------------------------------------
 #处理数据
 function deal_data(){
 	table=$1
@@ -48,25 +51,50 @@ function deal_data(){
 		echo $result
 	fi
 }
+#--------------------------------------------------------
+#定义数据处理函数,汇总ts,kts,d三者的数据
+function mege_data(){
+        table=$1
+        sum=0
+        mege_sql="select f_ts_current,f_kts_current from ${table} order by f_time desc limit 1;"
+        result=`$mysql_cmd -e "$mege_sql" | grep -v "current" | awk '{print sum=$1+$2}'`
+        if [ -z "$result" ];then
+        	echo "0"
+       	else
+                echo $result
+	fi
+}
 
+#--------------------------------------------------------
+#数据汇总处理
+function result_fun(){
+        if [ "$value" == "ts_total" ];then
+                mege_data "t_dss_stat_playc_${equipment_type}_${serviceid}"
+        else
+                deal_data "t_dss_stat_playc_${equipment_type}_${serviceid}"
+        fi
+}
+
+#--------------------------------------------------------
+#主入口
 case $3 in
 	total)
-		deal_data "t_dss_stat_playc_total_${serviceid}"
+		result_fun
 		;;
 	stb)
-		deal_data "t_dss_stat_playc_stb_${serviceid}"
+		result_fun
 		;;
 	smartcard)
-		deal_data "t_dss_stat_playc_smartcard_${serviceid}"
+		result_fun
 		;;
 	mobile)
-		deal_data "t_dss_stat_playc_mobile_${serviceid}"
+		result_fun
 		;;
 	pad)
-		deal_data "t_dss_stat_playc_pad_${serviceid}"
+		result_fun
 		;;
 	pc)
-		deal_data "t_dss_stat_playc_pc_${serviceid}"
+		result_fun
 		;;
 	*)
 		echo "Error"
