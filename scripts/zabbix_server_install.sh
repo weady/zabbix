@@ -7,7 +7,6 @@
 
 #check env function
 #
-#dbip=`cat /homed/config_comm.xml | grep "mt_db_ip" |sed -re 's/.*>(.*)<.*$/\1/g'`
 dbip="127.0.0.1"
 username=$3
 password=$4
@@ -97,7 +96,7 @@ function mailx_install(){
 	if [ -z "mail" -o -z "$smtp" ];then
 		yum install -y mailx
 cat >>/etc/mail.rc <<EOF
-set from=wangdd@iPanel.cn smtp=smtp.iPanel.cn
+set from=xxx@xxx.cn smtp=xxx.xxx.cn
 set smtp-auth-user=wangdd smtp-auth-password=xxxx
 set smtp-auth=login
 EOF
